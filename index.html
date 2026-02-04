@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lions Club of Bangalore Sankalpa | We Serve</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="assets/images/other/logo.png" alt="Lions International Logo" class="logo">
+                <div class="brand-text">
+                    <h3>LCB Sankalpa</h3>
+                    <span>We Serve</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#get-involved" class="nav-link">Get Involved</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button class="btn btn--primary nav-cta" onclick="showSection('get-involved')">Join Us</button></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-section active">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Lions Club of Bangalore Sankalpa</h1>
+                <p class="hero-subtitle">Serving our community with dedication since 2018</p>
+                <p class="hero-description">We are part of Lions Clubs International, the world's largest service club organization. Join us in making a difference through vision care, health services, education support, and community service.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn--outline" onclick="showSection('services')">Our Services</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/other/hero-image.jpg" alt="Community Service">
+            </div>
+        </div>
+        
+        <!-- Image Carousel -->
+        <div class="hero-carousel">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754888386/pplx_project_search_images/ccfebb7375adfb53e887d92a8a3282245b1898f9.png" alt="Community Engagement">
+                        <div class="carousel-caption">
+                            <h4>Community Engagement</h4>
+                            <p>Volunteers working with children</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/952886b297357b51cb3806cf1de2624f139f27bd.png" alt="Lions Club Service">
+                        <div class="carousel-caption">
+                            <h4>Vision Care</h4>
+                            <p>Eye screening camps for communities</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754813954/pplx_project_search_images/279d9be1e7c8dab3ce9d5b570a8818311130ed6d.png" alt="Medical Support">
+                        <div class="carousel-caption">
+                            <h4>Medical Support</h4>
+                            <p>Healthcare volunteers in action</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051898/pplx_project_search_images/c8d2701de7e231d9e62db7f8f61369fedb391199.png" alt="Community Event">
+                        <div class="carousel-caption">
+                            <h4>Community Events</h4>
+                            <p>Lions Club volunteers gathering</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/f7a9a6d8ca6c0e59015add3603c5f7cac716b1eb.png" alt="Fundraising">
+                        <div class="carousel-caption">
+                            <h4>Fundraising</h4>
+                            <p>Community fundraising activities</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/20e044c87c05a6e10bde813370d1f69b5fe49177.png" alt="Volunteers">
+                        <div class="carousel-caption">
+                            <h4>Volunteer Spirit</h4>
+                            <p>Hands joined in service</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+                <span class="indicator" onclick="goToSlide(4)"></span>
+                <span class="indicator" onclick="goToSlide(5)"></span>
+            </div>
+        </div>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <h3>7+</h3>
+                <p>Years Serving</p>
+            </div>
+            <div class="stat-item">
+                <h3>250+</h3>
+                <p>Total Points</p>
+            </div>
+            <div class="stat-item">
+                <h3>45+</h3>
+                <p>Total Projects</p>
+            </div>
+            <div class="stat-item">
+                <h3>∞</h3>
+                <p>Lives Touched</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Learn about our club's history and Lions International</p>
+            </div>
+            <div class="about-content">
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="card__body">
+                            <h3>Our Club</h3>
+                            <p>Lions Club of Bangalore Sankalpa was chartered in 2018 as part of District 317A. We meet on the 2nd Saturday of every month at 2:00 PM in Sankalpa, bringing together community leaders dedicated to service.</p>
+                            <div class="club-details">
+                                <p><strong>Charter Year:</strong> 2018</p>
+                                <p><strong>District:</strong> 317A</p>
+                                <p><strong>Club Number:</strong> 135597</p>
+                                <p><strong>Location:</strong> Bangalore, Karnataka</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-card">
+                        <div class="card__body">
+                            <h3>Lions International</h3>
+                            <p>We are proud members of Lions Clubs International, founded in 1917. With 1.4+ million members in over 200 countries, we are the world's largest service club organization.</p>
+                            <div class="mission-vision">
+                                <h4>Mission</h4>
+                                <p>To empower volunteers to serve their communities, meet humanitarian needs, encourage peace and promote international understanding through Lions clubs.</p>
+                                <h4>Vision</h4>
+                                <p>To be the global leader in community and humanitarian service.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="club-mission card">
+                    <div class="card__body">
+                        <h3>Our Mission</h3>
+                        <p>To serve our local Bangalore community through dedicated volunteer efforts, focusing on vision care, health services, education support, and disaster relief while fostering fellowship among our members.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Making a difference in our community through focused service areas</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="card__body">
+                        <h3>Vision Care</h3>
+                        <p>Providing eye examinations, glasses distribution, and cataract surgeries for underprivileged communities</p>
+                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('vision')">Learn More</button>
+                    </div>
+                </div>
+                <div class="service-card card">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="card__body">
+                        <h3>Diabetes Awareness</h3>
+                        <p>Health screenings, education programs, and support for diabetes prevention and management</p>
+                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('diabetes')">Learn More</button>
+                    </div>
+                </div>
+                <div class="service-card card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="card__body">
+                        <h3>Hunger Relief</h3>
+                        <p>Food distribution programs, community kitchens, and nutrition education initiatives</p>
+                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('hunger')">Learn More</button>
+                    </div>
+                </div>
+                <div class="service-card card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="card__body">
+                        <h3>Childhood Cancer</h3>
+                        <p>Support for children battling cancer and their families through financial aid and emotional support</p>
+                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('cancer')">Learn More</button>
+                    </div>
+                </div>
+                <div class="service-card card">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="card__body">
+                        <h3>Environment</h3>
+                        <p>Tree plantation drives, clean-up campaigns, and environmental awareness programs</p>
+                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('environment')">Learn More</button>
+                    </div>
+                </div>
+                <div class="service-card card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card__body">
+                        <h3>Education Support</h3>
+                        <p>Scholarships, school supplies, infrastructure development, and literacy programs</p>
+                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('education')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects & Activities</h2>
+                <p>Explore our 200+ projects making a difference in the community</p>
+            </div>
+            
+            <!-- Projects Controls -->
+            <div class="projects-controls">
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="projectSearch" placeholder="Search projects..." />
+                    </div>
+                </div>
+                
+                <!-- Filters -->
+                <div class="filters-container">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                    </select>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                    </select>
+                    <select id="yearFilter" class="filter-select">
+                        <option value="">All Years</option>
+                    </select>
+                </div>
+                
+                <!-- View Toggle -->
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Projects Stats -->
+            <div class="projects-stats">
+                <div class="stat-card">
+                    <h3 id="totalProjects">200</h3>
+                    <p>Total Projects</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="completedProjects">0</h3>
+                    <p>Completed</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="ongoingProjects">0</h3>
+                    <p>Ongoing</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalBeneficiaries">0</h3>
+                    <p>Beneficiaries</p>
+                </div>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="projects-content">
+                <div id="projectsGrid" class="projects-grid">
+                    <!-- Projects will be dynamically loaded here -->
+                </div>
+                
+                <!-- Loading State -->
+                <div id="projectsLoading" class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading projects...</p>
+                </div>
+                
+                <!-- Empty State -->
+                <div id="projectsEmpty" class="empty-state" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No projects found</h3>
+                    <p>Try adjusting your search or filters</p>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination-container">
+                <div class="pagination-info">
+                    <span id="paginationInfo">Showing 1-12 of 200 projects</span>
+                </div>
+                <div class="pagination-controls">
+                    <button id="prevPage" class="pagination-btn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div id="paginationNumbers" class="pagination-numbers">
+                        <!-- Page numbers will be generated here -->
+                    </div>
+                    <button id="nextPage" class="pagination-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="get-involved" class="section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Involved</h2>
+                <p>Join our community of dedicated volunteers</p>
+            </div>
+            <div class="involvement-content">
+                <div class="involvement-grid">
+                    <div class="involvement-card card">
+                        <div class="card__body">
+                            <h3>Membership Requirements</h3>
+                            <ul class="requirements-list">
+                                <li>Person of good moral character in the community</li>
+                                <li>Commitment to regular meeting attendance</li>
+                                <li>Willingness to participate in service projects</li>
+                                <li>Ability to contribute time and resources to club activities</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="involvement-card card">
+                        <div class="card__body">
+                            <h3>Membership Process</h3>
+                            <ol class="process-list">
+                                <li>Find a sponsor who is an active Lions Club member</li>
+                                <li>Submit application for membership</li>
+                                <li>Attend club meetings as a guest</li>
+                                <li>Approval by majority of club's board of directors</li>
+                                <li>Induction ceremony and welcome to the club</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="involvement-card card">
+                        <div class="card__body">
+                            <h3>Member Benefits</h3>
+                            <ul class="benefits-list">
+                                <li>Fellowship with like-minded community leaders</li>
+                                <li>Opportunities for meaningful community service</li>
+                                <li>Leadership development and training</li>
+                                <li>International network of Lions members</li>
+                                <li>Personal satisfaction from helping others</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-section">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Ready to Join?</h3>
+                            <p>Take the first step towards making a difference in your community</p>
+                            <button class="btn btn--primary" onclick="showSection('contact')">Contact Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Moments from our community service activities</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openGalleryModal(0)">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754888386/pplx_project_search_images/ccfebb7375adfb53e887d92a8a3282245b1898f9.png" alt="Community Service">
+                    <div class="gallery-overlay">
+                        <h4>Community Engagement</h4>
+                        <p>Volunteers working with children</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(1)">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/952886b297357b51cb3806cf1de2624f139f27bd.png" alt="Lions Club Volunteers">
+                    <div class="gallery-overlay">
+                        <h4>Lions Club Service</h4>
+                        <p>Vision and hearing screenings</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(2)">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754813954/pplx_project_search_images/279d9be1e7c8dab3ce9d5b570a8818311130ed6d.png" alt="Medical Volunteers">
+                    <div class="gallery-overlay">
+                        <h4>Medical Support</h4>
+                        <p>Healthcare volunteers in action</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(3)">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051898/pplx_project_search_images/c8d2701de7e231d9e62db7f8f61369fedb391199.png" alt="Community Event">
+                    <div class="gallery-overlay">
+                        <h4>Community Event</h4>
+                        <p>Lions Club volunteers gathering</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(4)">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/f7a9a6d8ca6c0e59015add3603c5f7cac716b1eb.png" alt="Fundraising Event">
+                    <div class="gallery-overlay">
+                        <h4>Fundraising</h4>
+                        <p>Community fundraising activities</p>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(5)">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/20e044c87c05a6e10bde813370d1f69b5fe49177.png" alt="Volunteers">
+                    <div class="gallery-overlay">
+                        <h4>Volunteer Spirit</h4>
+                        <p>Hands joined in service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for membership inquiries or more information</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-grid">
+                    <div class="contact-info card">
+                        <div class="card__body">
+                            <h3>Club Information</h3>
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <p>info@lcbsankalpa.org</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <h4>Phone</h4>
+                                        <p>+91 98765 43210</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <h4>Address</h4>
+                                        <p>Sankalpa, Bangalore, Karnataka 560037</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <div>
+                                        <h4>Meetings</h4>
+                                        <p>2nd Saturday at 2:00 PM<br>Community Hall, Sankalpa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="social-links">
+                                <h4>Follow Us</h4>
+                                <div class="social-icons">
+                                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form card">
+                        <div class="card__body">
+                            <h3>Send us a Message</h3>
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject" class="form-label">Subject *</label>
+                                    <select id="subject" name="subject" class="form-control" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="membership">Membership Inquiry</option>
+                                        <option value="volunteer">Volunteer Opportunities</option>
+                                        <option value="partnership">Partnership/Sponsorship</option>
+                                        <option value="general">General Inquiry</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Modal -->
+    <div id="serviceModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeServiceModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal hidden">
+        <div class="modal-content gallery-modal">
+            <span class="close" onclick="closeGalleryModal()">&times;</span>
+            <img id="galleryModalImage" src="" alt="">
+            <div class="gallery-modal-nav">
+                <button class="gallery-nav-btn" onclick="previousGalleryImage()">&#8249;</button>
+                <button class="gallery-nav-btn" onclick="nextGalleryImage()">&#8250;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Lions Club of Bangalore Sankalpa</h4>
+                    <p>Part of Lions Clubs International - District 317A</p>
+                    <p>Chartered 2018 | Club #135597</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#get-involved">Get Involved</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@lcbsankalpa.org</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Meetings: 2nd Saturday, 2:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Lions International</h4>
+                    <p><a href="https://www.lionsclubs.org" target="_blank">Lions Clubs International</a></p>
+                    <p><a href="https://www.lionsclubs.org/en/discover-our-foundation" target="_blank">Lions Foundation</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lions Club of Bangalore Sankalpa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/image-config.js"></script>
+    <script src="assets/js/dynamic-content.js"></script>
+    <script src="assets/js/projects-database.js"></script>
+    <script src="assets/js/projects-manager.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

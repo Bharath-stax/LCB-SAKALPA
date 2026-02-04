@@ -1,0 +1,14 @@
+# Quick Git Setup - Copy Paste Commands
+
+# Navigate to project
+cd A:\LCB\v1
+
+# Initialize and commit
+git init
+git add .
+git commit -m "Initial commit: Lions Club website"
+
+# Add remote and push (after creating repo on GitHub)
+git remote add origin https://github.com/Bharath-stax/lions-club-sankalpa.git
+git branch -M main
+git push -u origin main
