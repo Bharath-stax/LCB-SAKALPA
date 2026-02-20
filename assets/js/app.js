@@ -677,9 +677,14 @@ function submitContactForm() {
     const originalText = submitButton.textContent;
     
     // Show loading state
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitButton.disabled = true;
     submitButton.style.background = 'linear-gradient(135deg, #0891B2, #3B82F6)';
+    
+    // Initialize EmailJS with your public key
+    (function() {
+        emailjs.init("service_5pa8mqk");
+    })();
     
     // Get form data
     const name = document.getElementById('name').value;
@@ -688,39 +693,48 @@ function submitContactForm() {
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
     
-    // Create email subject and body
-    const emailSubject = encodeURIComponent(`Lions Club Contact: ${subject}`);
-    const emailBody = encodeURIComponent(
-        `Name: ${name}\n` +
-        `Email: ${email}\n` +
-        `Phone: ${phone}\n` +
-        `Subject: ${subject}\n\n` +
-        `Message:\n${message}\n\n` +
-        `---\n` +
-        `Sent from Lions Club of Bangalore Sankalpa Website`
-    );
+    // Prepare email data
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        phone: phone,
+        subject: subject,
+        message: message,
+        to_email: 'bharathae59@gmail.com'
+    };
     
-    // Create Gmail compose URL
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=bharathae59@gmail.com&su=${emailSubject}&body=${emailBody}`;
-    
-    // Show notification and redirect
-    showNotification('Redirecting to Gmail to send your message...', 'info');
-    
-    // Redirect to Gmail after a short delay
-    setTimeout(() => {
-        window.open(gmailUrl, '_blank');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Reset button
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-        submitButton.style.background = '';
-        
-        // Show success message
-        showNotification('Gmail has been opened in a new tab. Please send the email to complete your contact request.', 'success');
-    }, 1500);
+    // Send email using EmailJS
+    emailjs.send('service_oy-qF3i6eKcq37UJD', 'template_default', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Show success message
+            showNotification('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset button with success animation
+            submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitButton.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+            
+            setTimeout(() => {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                submitButton.style.background = '';
+            }, 2000);
+        })
+        .catch(function(error) {
+            console.log('FAILED...', error);
+            
+            // Show error message
+            showNotification('Sorry, there was an error sending your message. Please try again or contact us directly at bharathae59@gmail.com', 'error');
+            
+            // Reset button
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+            submitButton.style.background = '';
+        });
 }
 
 // Enhanced Notification System
