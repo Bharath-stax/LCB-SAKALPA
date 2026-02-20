@@ -3831,6 +3831,25 @@ main {
     width: 100%;
   }
   
+  .carousel-slide {
+    min-width: 100%;
+    position: relative;
+  }
+  
+  .carousel-container {
+    max-width: 100%;
+    margin: 0 var(--space-16);
+  }
+  
+  .full-width-carousel .carousel-item {
+    width: 100vw;
+    height: 300px;
+  }
+  
+  .full-width-carousel .carousel-track {
+    animation: none;
+  }
+  
   /* Enhanced mobile navigation */
   .nav-menu {
     position: fixed;
