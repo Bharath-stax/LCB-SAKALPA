@@ -1,78 +1,95 @@
 // Image Configuration - Easy to update paths and add new images
 const IMAGE_CONFIG = {
-  // Carousel Images - Add new images here
+  // Carousel Images - Updated with new images
   carousel: [
     {
-      src: 'assets/images/carousel/community-engagement.jpg',
-      alt: 'Community Engagement',
-      title: 'Community Engagement',
-      description: 'Volunteers working with children'
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.21.58 PM.jpeg',
+      alt: 'Community Service Activity',
+      title: 'Community Service',
+      description: 'Community service activities and outreach programs'
     },
     {
-      src: 'assets/images/carousel/vision-care.jpg',
-      alt: 'Lions Club Service',
-      title: 'Vision Care',
-      description: 'Eye screening camps for communities'
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22..jpeg',
+      alt: 'Club Meeting & Fellowship',
+      title: 'Club Activities',
+      description: 'Club meetings and fellowship activities'
     },
     {
-      src: 'assets/images/carousel/medical-support.jpg',
-      alt: 'Medical Support',
-      title: 'Medical Support',
-      description: 'Healthcare volunteers in action'
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.00 PM.jpeg',
+      alt: 'Healthcare Support Program',
+      title: 'Healthcare Support',
+      description: 'Healthcare support programs and medical assistance'
     },
     {
-      src: 'assets/images/carousel/community-event.jpg',
-      alt: 'Community Event',
-      title: 'Community Events',
-      description: 'Lions Club volunteers gathering'
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.01 PM.jpeg',
+      alt: 'Educational Initiatives',
+      title: 'Education Programs',
+      description: 'Educational initiatives and learning programs'
     },
     {
-      src: 'assets/images/carousel/fundraising.jpg',
-      alt: 'Fundraising',
-      title: 'Fundraising',
-      description: 'Community fundraising activities'
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.02 PM.jpeg',
+      alt: 'Awareness Campaign',
+      title: 'Awareness Programs',
+      description: 'Community awareness campaigns and outreach'
+    },
+    {
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 .jpeg',
+      alt: 'Community Outreach',
+      title: 'Community Outreach',
+      description: 'Community outreach and engagement activities'
+    },
+    {
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 P.jpeg',
+      alt: 'Youth Development Program',
+      title: 'Youth Programs',
+      description: 'Youth development and training programs'
+    },
+    {
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 PM.jpeg',
+      alt: 'Environmental Initiative',
+      title: 'Environmental Programs',
+      description: 'Environmental initiatives and conservation activities'
+    },
+    {
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.14 PM.jpeg',
+      alt: 'Disaster Relief Support',
+      title: 'Disaster Relief',
+      description: 'Disaster relief and emergency support services'
+    },
+    {
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.24 PM.jpeg',
+      alt: 'Cultural Celebration',
+      title: 'Cultural Events',
+      description: 'Cultural celebrations and community events'
+    },
+    {
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.28 PM.jpeg',
+      alt: 'Leadership Training',
+      title: 'Leadership Programs',
+      description: 'Leadership training and development programs'
+    },
+    {
+      src: 'assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.29 PM.jpeg',
+      alt: 'Medical Camp Services',
+      title: 'Medical Camps',
+      description: 'Medical camps and health screening services'
+    },
+    {
+      src: 'assets/images/carousel/fdfzhg.jpeg',
+      alt: 'Volunteer Recognition',
+      title: 'Volunteer Programs',
+      description: 'Volunteer recognition and appreciation programs'
     },
     {
       src: 'assets/images/carousel/volunteer-spirit.jpg',
-      alt: 'Volunteers',
+      alt: 'Volunteer Spirit',
       title: 'Volunteer Spirit',
-      description: 'Hands joined in service'
+      description: 'Volunteer spirit and community service activities'
     }
   ],
 
-  // Gallery Images - Add new gallery images here
-  gallery: [
-    {
-      src: 'assets/images/gallery/community-engagement.jpg',
-      title: 'Community Engagement',
-      description: 'Volunteers working with children in community programs'
-    },
-    {
-      src: 'assets/images/gallery/lions-service.jpg',
-      title: 'Lions Club Service',
-      description: 'Vision and hearing screenings for the community'
-    },
-    {
-      src: 'assets/images/gallery/medical-support.jpg',
-      title: 'Medical Support',
-      description: 'Healthcare volunteers providing medical assistance'
-    },
-    {
-      src: 'assets/images/gallery/community-event.jpg',
-      title: 'Community Event',
-      description: 'Lions Club volunteers gathering for community service'
-    },
-    {
-      src: 'assets/images/gallery/fundraising.jpg',
-      title: 'Fundraising',
-      description: 'Community fundraising activities and events'
-    },
-    {
-      src: 'assets/images/gallery/volunteer-spirit.jpg',
-      title: 'Volunteer Spirit',
-      description: 'Hands joined together symbolizing community service'
-    }
-  ],
+  // Gallery Images - Empty for now since using carousel in about section
+  gallery: [],
 
   // Service Icons - Update service icons here
   services: {

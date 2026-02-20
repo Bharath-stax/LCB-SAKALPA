@@ -1,430 +1,122 @@
-// Projects Management System - 200 Projects with Pagination, Search & Filters
-class ProjectsManager {
-  constructor() {
-    this.currentPage = 1;
-    this.projectsPerPage = 12;
-    this.filteredProjects = [];
-    this.currentView = 'grid';
-    this.searchTerm = '';
-    this.filters = {
-      category: '',
-      status: '',
-      year: ''
-    };
+// Show All Real Projects in 4-Column Grid
+function initializeProjects() {
+    console.log('Initializing all projects...');
     
-    this.init();
-  }
-
-  init() {
-    console.log('Initializing Projects Manager...');
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (!projectsGrid) {
+        console.log('Projects grid not found');
+        return;
+    }
     
-    // Wait for projects database to be available
+    // Hide loading
+    const loadingElement = document.getElementById('projectsLoading');
+    if (loadingElement) {
+        loadingElement.style.display = 'none';
+    }
+    
+    // Clear grid
+    projectsGrid.innerHTML = '';
+    
+    // Use real projects from database
     if (typeof window.PROJECTS_DATABASE !== 'undefined') {
-      console.log('Projects database found:', window.PROJECTS_DATABASE.projects.length, 'projects');
-      this.setupEventListeners();
-      this.populateFilters();
-      this.loadProjects();
-      this.updateStats();
-    } else {
-      console.error('Projects database not found');
-      // Retry after a short delay
-      setTimeout(() => this.init(), 500);
-    }
-  }
-
-  setupEventListeners() {
-    // Search functionality
-    const searchInput = document.getElementById('projectSearch');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        this.searchTerm = e.target.value.toLowerCase();
-        this.currentPage = 1;
-        this.filterAndDisplayProjects();
-      });
-    }
-
-    // Filter functionality
-    const categoryFilter = document.getElementById('categoryFilter');
-    const statusFilter = document.getElementById('statusFilter');
-    const yearFilter = document.getElementById('yearFilter');
-
-    if (categoryFilter) {
-      categoryFilter.addEventListener('change', (e) => {
-        this.filters.category = e.target.value;
-        this.currentPage = 1;
-        this.filterAndDisplayProjects();
-      });
-    }
-
-    if (statusFilter) {
-      statusFilter.addEventListener('change', (e) => {
-        this.filters.status = e.target.value;
-        this.currentPage = 1;
-        this.filterAndDisplayProjects();
-      });
-    }
-
-    if (yearFilter) {
-      yearFilter.addEventListener('change', (e) => {
-        this.filters.year = e.target.value;
-        this.currentPage = 1;
-        this.filterAndDisplayProjects();
-      });
-    }
-
-    // View toggle
-    const viewButtons = document.querySelectorAll('.view-btn');
-    viewButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        viewButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        this.currentView = btn.dataset.view;
-        this.updateView();
-      });
-    });
-
-    // Pagination
-    const prevBtn = document.getElementById('prevPage');
-    const nextBtn = document.getElementById('nextPage');
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        console.log('Previous button clicked, current page:', this.currentPage);
-        if (this.currentPage > 1) {
-          this.currentPage--;
-          console.log('Moving to page:', this.currentPage);
-          this.displayProjects();
-        } else {
-          console.log('Already on first page');
-        }
-      });
-    } else {
-      console.error('Previous button not found');
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        console.log('Next button clicked, current page:', this.currentPage);
-        const totalPages = Math.ceil(this.filteredProjects.length / this.projectsPerPage);
-        console.log('Total pages:', totalPages, 'Filtered projects:', this.filteredProjects.length);
-        if (this.currentPage < totalPages) {
-          this.currentPage++;
-          console.log('Moving to page:', this.currentPage);
-          this.displayProjects();
-        } else {
-          console.log('Already on last page');
-        }
-      });
-    } else {
-      console.error('Next button not found');
-    }
-  }
-
-  populateFilters() {
-    const db = window.PROJECTS_DATABASE;
-    
-    // Populate category filter
-    const categoryFilter = document.getElementById('categoryFilter');
-    if (categoryFilter) {
-      db.categories.forEach(category => {
-        const option = document.createElement('option');
-        option.value = category.id;
-        option.textContent = category.name;
-        categoryFilter.appendChild(option);
-      });
-    }
-
-    // Populate status filter
-    const statusFilter = document.getElementById('statusFilter');
-    if (statusFilter) {
-      db.status.forEach(status => {
-        const option = document.createElement('option');
-        option.value = status.id;
-        option.textContent = status.name;
-        statusFilter.appendChild(option);
-      });
-    }
-
-    // Populate year filter (2018-2027)
-    const yearFilter = document.getElementById('yearFilter');
-    if (yearFilter) {
-      const years = [...new Set(db.projects.map(p => new Date(p.date).getFullYear()))].sort();
-      years.forEach(year => {
-        const option = document.createElement('option');
-        option.value = year;
-        option.textContent = year;
-        yearFilter.appendChild(option);
-      });
-    }
-  }
-
-  loadProjects() {
-    this.filteredProjects = [...window.PROJECTS_DATABASE.projects];
-    this.filterAndDisplayProjects();
-  }
-
-  filterAndDisplayProjects() {
-    // Apply filters
-    this.filteredProjects = window.PROJECTS_DATABASE.projects.filter(project => {
-      // Search filter
-      if (this.searchTerm && !project.title.toLowerCase().includes(this.searchTerm) && 
-          !project.description.toLowerCase().includes(this.searchTerm)) {
-        return false;
-      }
-
-      // Category filter
-      if (this.filters.category && project.category !== this.filters.category) {
-        return false;
-      }
-
-      // Status filter
-      if (this.filters.status && project.status !== this.filters.status) {
-        return false;
-      }
-
-      // Year filter
-      if (this.filters.year) {
-        const projectYear = new Date(project.date).getFullYear();
-        if (projectYear !== parseInt(this.filters.year)) {
-          return false;
-        }
-      }
-
-      return true;
-    });
-
-    this.displayProjects();
-    this.updatePagination();
-  }
-
-  displayProjects() {
-    const grid = document.getElementById('projectsGrid');
-    const loading = document.getElementById('projectsLoading');
-    const empty = document.getElementById('projectsEmpty');
-
-    console.log('Displaying projects - Current page:', this.currentPage, 'Total filtered:', this.filteredProjects.length);
-
-    if (!grid) {
-      console.error('Projects grid not found');
-      return;
-    }
-
-    // Hide loading, show grid
-    if (loading) loading.style.display = 'none';
-    if (empty) empty.style.display = 'none';
-
-    // Calculate pagination
-    const startIndex = (this.currentPage - 1) * this.projectsPerPage;
-    const endIndex = startIndex + this.projectsPerPage;
-    const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
-
-    console.log('Projects to show:', projectsToShow.length, 'Start index:', startIndex, 'End index:', endIndex);
-
-    if (projectsToShow.length === 0) {
-      grid.style.display = 'none';
-      if (empty) empty.style.display = 'block';
-      return;
-    }
-
-    grid.style.display = 'grid';
-    grid.innerHTML = '';
-
-    projectsToShow.forEach(project => {
-      const projectCard = this.createProjectCard(project);
-      grid.appendChild(projectCard);
-    });
-
-    this.updatePagination();
-  }
-
-  createProjectCard(project) {
-    const db = window.PROJECTS_DATABASE;
-    const category = db.categories.find(c => c.id === project.category);
-    const status = db.status.find(s => s.id === project.status);
-
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    
-    card.innerHTML = `
-      <div class="project-card-header">
-        <h3 class="project-title">${project.title}</h3>
-        <div class="project-meta">
-          <span class="project-category" style="background-color: ${category?.color || '#8B5CF6'}20; color: ${category?.color || '#8B5CF6'}">
-            ${category?.name || project.category}
-          </span>
-          <span class="project-status" style="background-color: ${status?.color || '#10B981'}20; color: ${status?.color || '#10B981'}">
-            ${status?.name || project.status}
-          </span>
-        </div>
-        <div class="project-date">
-          <i class="fas fa-calendar"></i> ${new Date(project.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </div>
-      </div>
-      <div class="project-card-body">
-        <p class="project-description">${project.description}</p>
-        <div class="project-details">
-          <div class="project-detail">
-            <span class="project-detail-value">${project.volunteers}</span>
-            <span class="project-detail-label">Volunteers</span>
-          </div>
-          <div class="project-detail">
-            <span class="project-detail-value">₹${project.budget.toLocaleString()}</span>
-            <span class="project-detail-label">Budget</span>
-          </div>
-          <div class="project-detail">
-            <span class="project-detail-value">${project.duration}</span>
-            <span class="project-detail-label">Duration</span>
-          </div>
-        </div>
-        <div class="project-location">
-          <i class="fas fa-map-marker-alt"></i>
-          ${project.location}
-        </div>
-        <div class="project-actions">
-          <button class="project-btn primary" onclick="projectsManager.viewProjectDetails('${project.id}')">
-            View Details
-          </button>
-          <button class="project-btn outline" onclick="projectsManager.shareProject('${project.id}')">
-            Share
-          </button>
-        </div>
-      </div>
-    `;
-
-    return card;
-  }
-
-  updateView() {
-    const grid = document.getElementById('projectsGrid');
-    if (grid) {
-      if (this.currentView === 'list') {
-        grid.classList.add('list-view');
-      } else {
-        grid.classList.remove('list-view');
-      }
-    }
-  }
-
-  updatePagination() {
-    const totalPages = Math.ceil(this.filteredProjects.length / this.projectsPerPage);
-    const prevBtn = document.getElementById('prevPage');
-    const nextBtn = document.getElementById('nextPage');
-    const paginationNumbers = document.getElementById('paginationNumbers');
-    const paginationInfo = document.getElementById('paginationInfo');
-
-    console.log('Updating pagination - Total pages:', totalPages, 'Current page:', this.currentPage, 'Filtered projects:', this.filteredProjects.length);
-
-    // Update prev/next buttons
-    if (prevBtn) {
-      prevBtn.disabled = this.currentPage === 1;
-      console.log('Previous button disabled:', prevBtn.disabled);
-    }
-    if (nextBtn) {
-      nextBtn.disabled = this.currentPage === totalPages || totalPages === 0;
-      console.log('Next button disabled:', nextBtn.disabled, 'Current page >= total pages:', this.currentPage >= totalPages, 'Total pages is 0:', totalPages === 0);
-    }
-
-    // Update pagination info
-    if (paginationInfo) {
-      const start = (this.currentPage - 1) * this.projectsPerPage + 1;
-      const end = Math.min(this.currentPage * this.projectsPerPage, this.filteredProjects.length);
-      paginationInfo.textContent = `Showing ${start}-${end} of ${this.filteredProjects.length} projects`;
-    }
-
-    // Update page numbers
-    if (paginationNumbers) {
-      paginationNumbers.innerHTML = '';
-      
-      // Show max 5 page numbers
-      let startPage = Math.max(1, this.currentPage - 2);
-      let endPage = Math.min(totalPages, startPage + 4);
-      
-      if (endPage - startPage < 4) {
-        startPage = Math.max(1, endPage - 4);
-      }
-
-      for (let i = startPage; i <= endPage; i++) {
-        const pageBtn = document.createElement('button');
-        pageBtn.className = 'page-number';
-        if (i === this.currentPage) {
-          pageBtn.classList.add('active');
-        }
-        pageBtn.textContent = i;
-        pageBtn.addEventListener('click', () => {
-          this.currentPage = i;
-          this.displayProjects();
+        const allProjects = window.PROJECTS_DATABASE.projects;
+        console.log('Loading', allProjects.length, 'real projects');
+        
+        // Add all projects to grid
+        allProjects.forEach((project, index) => {
+            const card = createProjectCard(project);
+            projectsGrid.appendChild(card);
+            
+            if (index < 10) {
+                console.log(`Card ${index + 1}: ${project.title}`);
+            }
         });
-        paginationNumbers.appendChild(pageBtn);
-      }
+        
+        console.log('Total cards added:', projectsGrid.children.length);
+    } else {
+        console.log('Projects database not available, retrying...');
+        setTimeout(initializeProjects, 500);
     }
-  }
-
-  updateStats() {
-    const db = window.PROJECTS_DATABASE;
-    const totalProjects = document.getElementById('totalProjects');
-    const completedProjects = document.getElementById('completedProjects');
-    const ongoingProjects = document.getElementById('ongoingProjects');
-    const totalBeneficiaries = document.getElementById('totalBeneficiaries');
-
-    if (totalProjects) {
-      totalProjects.textContent = db.projects.length;
-    }
-
-    if (completedProjects) {
-      const completed = db.projects.filter(p => p.status === 'completed').length;
-      completedProjects.textContent = completed;
-    }
-
-    if (ongoingProjects) {
-      const ongoing = db.projects.filter(p => p.status === 'ongoing').length;
-      ongoingProjects.textContent = ongoing;
-    }
-
-    if (totalBeneficiaries) {
-      // Calculate estimated beneficiaries (rough estimate)
-      const totalVolunteers = db.projects.reduce((sum, p) => sum + p.volunteers, 0);
-      const estimatedBeneficiaries = totalVolunteers * 10; // Rough estimate
-      totalBeneficiaries.textContent = estimatedBeneficiaries.toLocaleString() + '+';
-    }
-  }
-
-  viewProjectDetails(projectId) {
-    const project = window.PROJECTS_DATABASE.projects.find(p => p.id === projectId);
-    if (project) {
-      console.log('Viewing project details:', project);
-      // You can implement a modal or navigate to a details page
-      alert(`Project Details:\n\nTitle: ${project.title}\nDescription: ${project.description}\nCategory: ${project.category}\nStatus: ${project.status}\nDate: ${project.date}\nLocation: ${project.location}\nVolunteers: ${project.volunteers}\nBudget: ₹${project.budget.toLocaleString()}`);
-    }
-  }
-
-  shareProject(projectId) {
-    const project = window.PROJECTS_DATABASE.projects.find(p => p.id === projectId);
-    if (project) {
-      const shareText = `Check out this project: ${project.title}\n\n${project.description}`;
-      if (navigator.share) {
-        navigator.share({
-          title: project.title,
-          text: shareText,
-          url: window.location.href + '#projects'
-        });
-      } else {
-        // Fallback - copy to clipboard
-        navigator.clipboard.writeText(shareText);
-        alert('Project details copied to clipboard!');
-      }
-    }
-  }
 }
 
-// Initialize projects manager when DOM is ready
-let projectsManager;
+function createProjectCard(project) {
+    const card = document.createElement('div');
+    card.className = 'project-card card';
+    card.style.cssText = `
+        padding: 20px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06);
+        border: 1px solid rgba(0,0,0,0.03);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    `;
+    
+    // Get category color
+    const categoryColors = {
+        health: 'var(--electric-blue)',
+        education: 'var(--bright-orange)',
+        environment: 'var(--emerald-green)',
+        community: 'var(--vibrant-purple)',
+        youth: 'var(--electric-blue)',
+        disaster: 'var(--bright-orange)',
+        senior: 'var(--vibrant-purple)',
+        international: 'var(--bright-orange)'
+    };
+    
+    const categoryColor = categoryColors[project.category] || 'var(--vibrant-purple)';
+    
+    card.innerHTML = `
+        <div style="position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: linear-gradient(180deg, ${categoryColor}40, ${categoryColor}10); border-radius: 0 16px 16px 0;"></div>
+        <div style="display: flex; align-items: flex-start; margin-bottom: 16px; position: relative; z-index: 1;">
+            <div style="width: 12px; height: 12px; background: ${categoryColor}; border-radius: 50%; margin-right: 12px; box-shadow: 0 2px 8px ${categoryColor}40; flex-shrink: 0;"></div>
+            <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #1a1a1a; line-height: 1.3; flex: 1;">${project.title}</h3>
+        </div>
+        <p style="margin: 0 0 16px 0; font-size: 13px; color: #4a5568; line-height: 1.6; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${project.description}</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.06);">
+            <span style="background: linear-gradient(135deg, ${categoryColor}20, ${categoryColor}10); color: ${categoryColor}; padding: 6px 12px; border-radius: 20px; font-weight: 600; font-size: 11px; letter-spacing: 0.5px; box-shadow: 0 2px 8px ${categoryColor}20;">
+                ${project.category.toUpperCase()}
+            </span>
+            <span style="color: #6b7280; font-size: 12px; font-weight: 500;">
+                ${new Date(project.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+            </span>
+        </div>
+    `;
+    
+    card.onmouseover = function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+        this.style.boxShadow = '0 12px 40px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.1)';
+        this.style.borderColor = categoryColor + '30';
+    };
+    
+    card.onmouseout = function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06)';
+        this.style.borderColor = 'rgba(0,0,0,0.03)';
+    };
+    
+    return card;
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, initializing projects manager...');
-  setTimeout(() => {
-    console.log('Creating projects manager instance...');
-    projectsManager = new ProjectsManager();
-    window.projectsManager = projectsManager; // Make it globally accessible
-    console.log('Projects manager created:', projectsManager);
-  }, 1000);
-});
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeProjects);
+} else {
+    initializeProjects();
+}
+
+// Also initialize when projects section is shown
+const originalShowSection = window.showSection;
+if (originalShowSection) {
+    window.showSection = function(sectionId) {
+        originalShowSection(sectionId);
+        if (sectionId === 'projects') {
+            setTimeout(initializeProjects, 100);
+        }
+    };
+}

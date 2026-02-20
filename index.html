@@ -6,6 +6,7 @@
     <title>Lions Club of Bangalore Sankalpa | We Serve</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -21,8 +22,8 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#permanent-projects" class="nav-link">Permanent Projects</a></li>
                 <li><a href="#get-involved" class="nav-link">Get Involved</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -41,92 +42,109 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Lions Club of Bangalore Sankalpa</h1>
-                <p class="hero-subtitle">Serving our community with dedication since 2018</p>
+                <p class="hero-subtitle">Serving our community with dedication since 2024</p>
                 <p class="hero-description">We are part of Lions Clubs International, the world's largest service club organization. Join us in making a difference through vision care, health services, education support, and community service.</p>
                 <div class="hero-buttons">
-                    <button class="btn btn--outline" onclick="showSection('services')">Our Services</button>
+                    <button class="btn btn--outline" onclick="showSection('projects')">Our Projects</button>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="assets/images/other/hero-image.jpg" alt="Community Service">
+                <img src="assets/images/other/WhatsApp Image 2026-02-09 at 8.00.24 PM.jpeg" alt="Community Service">
             </div>
         </div>
         
-        <!-- Image Carousel -->
-        <div class="hero-carousel">
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-slide">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754888386/pplx_project_search_images/ccfebb7375adfb53e887d92a8a3282245b1898f9.png" alt="Community Engagement">
-                        <div class="carousel-caption">
-                            <h4>Community Engagement</h4>
-                            <p>Volunteers working with children</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/952886b297357b51cb3806cf1de2624f139f27bd.png" alt="Lions Club Service">
-                        <div class="carousel-caption">
-                            <h4>Vision Care</h4>
-                            <p>Eye screening camps for communities</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754813954/pplx_project_search_images/279d9be1e7c8dab3ce9d5b570a8818311130ed6d.png" alt="Medical Support">
-                        <div class="carousel-caption">
-                            <h4>Medical Support</h4>
-                            <p>Healthcare volunteers in action</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051898/pplx_project_search_images/c8d2701de7e231d9e62db7f8f61369fedb391199.png" alt="Community Event">
-                        <div class="carousel-caption">
-                            <h4>Community Events</h4>
-                            <p>Lions Club volunteers gathering</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/f7a9a6d8ca6c0e59015add3603c5f7cac716b1eb.png" alt="Fundraising">
-                        <div class="carousel-caption">
-                            <h4>Fundraising</h4>
-                            <p>Community fundraising activities</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/20e044c87c05a6e10bde813370d1f69b5fe49177.png" alt="Volunteers">
-                        <div class="carousel-caption">
-                            <h4>Volunteer Spirit</h4>
-                            <p>Hands joined in service</p>
-                        </div>
-                    </div>
+        <!-- Full Width Image Carousel -->
+        <div class="full-width-carousel">
+            <div class="carousel-track">
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-0.jpeg" alt="Club Activity">
                 </div>
-                <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            <div class="carousel-indicators">
-                <span class="indicator active" onclick="goToSlide(0)"></span>
-                <span class="indicator" onclick="goToSlide(1)"></span>
-                <span class="indicator" onclick="goToSlide(2)"></span>
-                <span class="indicator" onclick="goToSlide(3)"></span>
-                <span class="indicator" onclick="goToSlide(4)"></span>
-                <span class="indicator" onclick="goToSlide(5)"></span>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 1.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10..jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.2.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.21.58 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22..jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.00 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.01 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.02 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 .jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 P.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.14 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.24 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.27 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.28 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.29 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.30 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.31 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.32 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-09 a.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp Image 2026-02-09 at 8.00.23 PM.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/WhatsApp.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/fdfzhg.jpeg" alt="Club Activity">
+                </div>
+                <div class="carousel-item">
+                    <img src="assets/images/carousel/jgfhjbjhjnj.jpeg" alt="Club Activity">
+                </div>
             </div>
         </div>
         
         <div class="hero-stats">
             <div class="stat-item">
-                <h3>7+</h3>
+                <h3>1+</h3>
                 <p>Years Serving</p>
             </div>
             <div class="stat-item">
-                <h3>250+</h3>
+                <h3>35,900+</h3>
                 <p>Total Points</p>
             </div>
             <div class="stat-item">
-                <h3>45+</h3>
+                <h3>110+</h3>
                 <p>Total Projects</p>
             </div>
             <div class="stat-item">
@@ -148,12 +166,12 @@
                     <div class="about-card">
                         <div class="card__body">
                             <h3>Our Club</h3>
-                            <p>Lions Club of Bangalore Sankalpa was chartered in 2018 as part of District 317A. We meet on the 2nd Saturday of every month at 2:00 PM in Sankalpa, bringing together community leaders dedicated to service.</p>
+                            <p>Lions Club of Bangalore Sankalpa was chartered on July 16th, 2024 as part of District 317A. We meet on the 2nd Saturday of every month at 2:00 PM in Sankalpa, bringing together community leaders dedicated to service.</p>
                             <div class="club-details">
-                                <p><strong>Charter Year:</strong> 2018</p>
+                                <p><strong>Charter Year:</strong> 2024</p>
+                                <p><strong>Charter Date:</strong> July 16th, 2024</p>
                                 <p><strong>District:</strong> 317A</p>
-                                <p><strong>Club Number:</strong> 135597</p>
-                                <p><strong>Location:</strong> Bangalore, Karnataka</p>
+                                                                <p><strong>Location:</strong> Bangalore, Karnataka</p>
                             </div>
                         </div>
                     </div>
@@ -176,76 +194,143 @@
                         <p>To serve our local Bangalore community through dedicated volunteer efforts, focusing on vision care, health services, education support, and disaster relief while fostering fellowship among our members.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section hidden">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Making a difference in our community through focused service areas</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card card">
-                    <div class="service-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <div class="card__body">
-                        <h3>Vision Care</h3>
-                        <p>Providing eye examinations, glasses distribution, and cataract surgeries for underprivileged communities</p>
-                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('vision')">Learn More</button>
-                    </div>
-                </div>
-                <div class="service-card card">
-                    <div class="service-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="card__body">
-                        <h3>Diabetes Awareness</h3>
-                        <p>Health screenings, education programs, and support for diabetes prevention and management</p>
-                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('diabetes')">Learn More</button>
-                    </div>
-                </div>
-                <div class="service-card card">
-                    <div class="service-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <div class="card__body">
-                        <h3>Hunger Relief</h3>
-                        <p>Food distribution programs, community kitchens, and nutrition education initiatives</p>
-                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('hunger')">Learn More</button>
-                    </div>
-                </div>
-                <div class="service-card card">
-                    <div class="service-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <div class="card__body">
-                        <h3>Childhood Cancer</h3>
-                        <p>Support for children battling cancer and their families through financial aid and emotional support</p>
-                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('cancer')">Learn More</button>
-                    </div>
-                </div>
-                <div class="service-card card">
-                    <div class="service-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="card__body">
-                        <h3>Environment</h3>
-                        <p>Tree plantation drives, clean-up campaigns, and environmental awareness programs</p>
-                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('environment')">Learn More</button>
-                    </div>
-                </div>
-                <div class="service-card card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="card__body">
-                        <h3>Education Support</h3>
-                        <p>Scholarships, school supplies, infrastructure development, and literacy programs</p>
-                        <button class="btn btn--sm btn--outline" onclick="openServiceModal('education')">Learn More</button>
+                
+                <!-- Photo Carousel Section -->
+                <div class="photo-carousel-section">
+                    <h3>Our Activities Gallery</h3>
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-0.jpeg" alt="Club Charter Ceremony" />
+                                <div class="slide-caption">Club Charter Ceremony</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 1.jpeg" alt="Charter Installation" />
+                                <div class="slide-caption">Charter Installation</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10..jpeg" alt="Charter Meeting" />
+                                <div class="slide-caption">Charter Meeting</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.2.jpeg" alt="Club Leadership" />
+                                <div class="slide-caption">Club Leadership</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.21.58 PM.jpeg" alt="Charter Members" />
+                                <div class="slide-caption">Charter Members</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22..jpeg" alt="Charter Ceremony" />
+                                <div class="slide-caption">Charter Ceremony</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.00 PM.jpeg" alt="Club Formation" />
+                                <div class="slide-caption">Club Formation</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.01 PM.jpeg" alt="Charter Event" />
+                                <div class="slide-caption">Charter Event</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.02 PM.jpeg" alt="Club Charter" />
+                                <div class="slide-caption">Club Charter</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 .jpeg" alt="Charter Celebration" />
+                                <div class="slide-caption">Charter Celebration</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 P.jpeg" alt="Club Installation" />
+                                <div class="slide-caption">Club Installation</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.09 PM.jpeg" alt="Charter Program" />
+                                <div class="slide-caption">Charter Program</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.14 PM.jpeg" alt="Charter Activities" />
+                                <div class="slide-caption">Charter Activities</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.24 PM.jpeg" alt="Club Charter Event" />
+                                <div class="slide-caption">Club Charter Event</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.27 PM.jpeg" alt="Charter Function" />
+                                <div class="slide-caption">Charter Function</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.28 PM.jpeg" alt="Club Charter Ceremony" />
+                                <div class="slide-caption">Club Charter Ceremony</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.29 PM.jpeg" alt="Charter Leadership" />
+                                <div class="slide-caption">Charter Leadership</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.30 PM.jpeg" alt="Club Charter Members" />
+                                <div class="slide-caption">Club Charter Members</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.31 PM.jpeg" alt="Charter Program" />
+                                <div class="slide-caption">Charter Program</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp Image 2026-02-06 at 10.22.32 PM.jpeg" alt="Club Charter Event" />
+                                <div class="slide-caption">Club Charter Event</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/WhatsApp.jpeg" alt="Charter Meeting" />
+                                <div class="slide-caption">Charter Meeting</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/fdfzhg.jpeg" alt="Club Charter" />
+                                <div class="slide-caption">Club Charter</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/jgfhjbjhjnj.jpeg" alt="Charter Ceremony" />
+                                <div class="slide-caption">Charter Ceremony</div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/images/carousel/volunteer-spirit.jpg" alt="Club Charter Spirit" />
+                                <div class="slide-caption">Club Charter Spirit</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Carousel Controls -->
+                        <button class="carousel-btn carousel-btn-prev" onclick="moveAboutCarousel(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" onclick="moveAboutCarousel(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <!-- Carousel Indicators -->
+                        <div class="carousel-indicators">
+                            <span class="indicator active" onclick="goToAboutSlide(0)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(1)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(2)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(3)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(4)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(5)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(6)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(7)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(8)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(9)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(10)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(11)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(12)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(13)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(14)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(15)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(16)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(17)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(18)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(19)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(20)"></span>
+                            <span class="indicator" onclick="goToAboutSlide(21)"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -257,66 +342,12 @@
         <div class="container">
             <div class="section-header">
                 <h2>Projects & Activities</h2>
-                <p>Explore our 200+ projects making a difference in the community</p>
-            </div>
-            
-            <!-- Projects Controls -->
-            <div class="projects-controls">
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="projectSearch" placeholder="Search projects..." />
-                    </div>
-                </div>
-                
-                <!-- Filters -->
-                <div class="filters-container">
-                    <select id="categoryFilter" class="filter-select">
-                        <option value="">All Categories</option>
-                    </select>
-                    <select id="statusFilter" class="filter-select">
-                        <option value="">All Status</option>
-                    </select>
-                    <select id="yearFilter" class="filter-select">
-                        <option value="">All Years</option>
-                    </select>
-                </div>
-                
-                <!-- View Toggle -->
-                <div class="view-toggle">
-                    <button class="view-btn active" data-view="grid">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button class="view-btn" data-view="list">
-                        <i class="fas fa-list"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Projects Stats -->
-            <div class="projects-stats">
-                <div class="stat-card">
-                    <h3 id="totalProjects">200</h3>
-                    <p>Total Projects</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="completedProjects">0</h3>
-                    <p>Completed</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="ongoingProjects">0</h3>
-                    <p>Ongoing</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="totalBeneficiaries">0</h3>
-                    <p>Beneficiaries</p>
-                </div>
+                <p>Explore our community service activities and projects</p>
             </div>
             
             <!-- Projects Grid -->
             <div class="projects-content">
-                <div id="projectsGrid" class="projects-grid">
+                <div id="projectsGrid" class="projects-grid-vertical">
                     <!-- Projects will be dynamically loaded here -->
                 </div>
                 
@@ -325,35 +356,108 @@
                     <i class="fas fa-spinner fa-spin"></i>
                     <p>Loading projects...</p>
                 </div>
-                
-                <!-- Empty State -->
-                <div id="projectsEmpty" class="empty-state" style="display: none;">
-                    <i class="fas fa-search"></i>
-                    <h3>No projects found</h3>
-                    <p>Try adjusting your search or filters</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Permanent Projects Section -->
+    <section id="permanent-projects" class="section hidden">
+        <div class="container">
+            <div class="section-header">
+                <h2>Permanent Projects</h2>
+                <p>Our ongoing commitment to education - Supporting 11 government schools in rural areas</p>
+            </div>
+            
+            <div class="permanent-projects-description">
+                <div class="description-card">
+                    <h3>Education Excellence Initiative</h3>
+                    <p>Lions Club of Bangalore Sankalpa is dedicated to transforming rural education through our permanent projects. We support 11 government schools across multiple villages, providing infrastructure development, educational materials, and comprehensive support to ensure quality education. Our commitment extends beyond basic education to create sustainable learning environments that empower future generations.</p>
                 </div>
             </div>
             
-            <!-- Pagination -->
-            <div class="pagination-container">
-                <div class="pagination-info">
-                    <span id="paginationInfo">Showing 1-12 of 200 projects</span>
-                </div>
-                <div class="pagination-controls">
-                    <button id="prevPage" class="pagination-btn" disabled>
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div id="paginationNumbers" class="pagination-numbers">
-                        <!-- Page numbers will be generated here -->
+            <!-- Schools Grid -->
+            <div class="schools-grid">
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Lower Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Chimandahalli</p>
                     </div>
-                    <button id="nextPage" class="pagination-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Higher Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Ganagalu</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Lower Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Petthanahalli</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Higher Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Kannurahalli</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government High School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Chikkagattiganabbe</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Lower Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jinnaghara</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Lower Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Doddagattiganabbe</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Lower Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Sarkar Guttahalli</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Poojena Agrahara School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Rural Area</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Lower Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Kannurahalli Extension</p>
+                    </div>
+                </div>
+                
+                <div class="school-card">
+                    <div class="card__body">
+                        <h3>Government Higher Primary School</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Yelahanka Extension</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    
     <!-- Get Involved Section -->
     <section id="get-involved" class="section hidden">
         <div class="container">
@@ -421,47 +525,104 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item" onclick="openGalleryModal(0)">
-                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754888386/pplx_project_search_images/ccfebb7375adfb53e887d92a8a3282245b1898f9.png" alt="Community Service">
-                    <div class="gallery-overlay">
-                        <h4>Community Engagement</h4>
-                        <p>Volunteers working with children</p>
-                    </div>
-                </div>
+                    <img src="assets/images/gallery/WhatsApp Image 20.jpeg" alt="Club Activity">
+                                    </div>
                 <div class="gallery-item" onclick="openGalleryModal(1)">
-                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/952886b297357b51cb3806cf1de2624f139f27bd.png" alt="Lions Club Volunteers">
-                    <div class="gallery-overlay">
-                        <h4>Lions Club Service</h4>
-                        <p>Vision and hearing screenings</p>
-                    </div>
-                </div>
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at .jpeg" alt="Club Activity">
+                                    </div>
                 <div class="gallery-item" onclick="openGalleryModal(2)">
-                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754813954/pplx_project_search_images/279d9be1e7c8dab3ce9d5b570a8818311130ed6d.png" alt="Medical Volunteers">
-                    <div class="gallery-overlay">
-                        <h4>Medical Support</h4>
-                        <p>Healthcare volunteers in action</p>
-                    </div>
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.2.jpeg" alt="Club Activity">
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(3)">
-                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051898/pplx_project_search_images/c8d2701de7e231d9e62db7f8f61369fedb391199.png" alt="Community Event">
-                    <div class="gallery-overlay">
-                        <h4>Community Event</h4>
-                        <p>Lions Club volunteers gathering</p>
-                    </div>
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.21.58 P.jpeg" alt="Club Activity">
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(4)">
-                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/f7a9a6d8ca6c0e59015add3603c5f7cac716b1eb.png" alt="Fundraising Event">
-                    <div class="gallery-overlay">
-                        <h4>Fundraising</h4>
-                        <p>Community fundraising activities</p>
-                    </div>
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.21.58 PM.jpeg" alt="Club Activity">
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(5)">
-                    <img src="https://pplx-res.cloudinary.com/image/upload/v1756051896/pplx_project_search_images/20e044c87c05a6e10bde813370d1f69b5fe49177.png" alt="Volunteers">
-                    <div class="gallery-overlay">
-                        <h4>Volunteer Spirit</h4>
-                        <p>Hands joined in service</p>
-                    </div>
-                </div>
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22..jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(6)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.00 .jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(7)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.00 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(8)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.01 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(9)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.01.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(10)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.02 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(11)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.02.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(12)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.03 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(13)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.04 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(14)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.07 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(15)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.08 .jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(16)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.08 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(17)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.10 .jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(18)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.10 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(19)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.12 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(20)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.13 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(21)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.14 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(22)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.18 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(23)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.20 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(24)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.24 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(25)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.27 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(26)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.28 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(27)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.29 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(28)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.30 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(29)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026-02-06 at 10.22.31 PM.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(30)">
+                    <img src="assets/images/gallery/WhatsApp Image 2026.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(31)">
+                    <img src="assets/images/gallery/WhatsApp Image.jpeg" alt="Club Activity">
+                                    </div>
+                <div class="gallery-item" onclick="openGalleryModal(32)">
+                    <img src="assets/images/gallery/mnbghjm.jpeg" alt="Club Activity">
+                                    </div>
             </div>
         </div>
     </section>
@@ -483,7 +644,7 @@
                                     <i class="fas fa-envelope"></i>
                                     <div>
                                         <h4>Email</h4>
-                                        <p>info@lcbsankalpa.org</p>
+                                        <p>bharathae59@gmail.com</p>
                                     </div>
                                 </div>
                                 <div class="contact-item">
@@ -499,21 +660,6 @@
                                         <h4>Address</h4>
                                         <p>Sankalpa, Bangalore, Karnataka 560037</p>
                                     </div>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <div>
-                                        <h4>Meetings</h4>
-                                        <p>2nd Saturday at 2:00 PM<br>Community Hall, Sankalpa</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="social-links">
-                                <h4>Follow Us</h4>
-                                <div class="social-icons">
-                                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -577,6 +723,7 @@
         </div>
     </div>
 
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -584,13 +731,12 @@
                 <div class="footer-section">
                     <h4>Lions Club of Bangalore Sankalpa</h4>
                     <p>Part of Lions Clubs International - District 317A</p>
-                    <p>Chartered 2018 | Club #135597</p>
+                    <p>Chartered on 2024</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Our Services</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#get-involved">Get Involved</a></li>
                     </ul>
@@ -599,7 +745,6 @@
                     <h4>Contact</h4>
                     <p>Email: info@lcbsankalpa.org</p>
                     <p>Phone: +91 98765 43210</p>
-                    <p>Meetings: 2nd Saturday, 2:00 PM</p>
                 </div>
                 <div class="footer-section">
                     <h4>Lions International</h4>
@@ -617,6 +762,7 @@
     <script src="assets/js/dynamic-content.js"></script>
     <script src="assets/js/projects-database.js"></script>
     <script src="assets/js/projects-manager.js"></script>
+    <script src="assets/js/permanent-projects.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 </html>

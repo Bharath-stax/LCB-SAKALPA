@@ -415,11 +415,7 @@ function openServiceModal(serviceKey) {
                     ${service.details.map(detail => `<li>${detail}</li>`).join('')}
                 </ul>
             </div>
-            <div class="service-modal-impact">
-                <h3>Our Impact:</h3>
-                <p>${service.impact}</p>
-            </div>
-            <div class="service-modal-footer">
+                        <div class="service-modal-footer">
                 <button class="btn btn--primary" onclick="closeServiceModal(); showSection('contact');">
                     Get Involved
                 </button>
@@ -680,29 +676,51 @@ function submitContactForm() {
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const originalText = submitButton.textContent;
     
-    // Show loading state with vibrant animation
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    // Show loading state
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
     submitButton.disabled = true;
     submitButton.style.background = 'linear-gradient(135deg, #0891B2, #3B82F6)';
     
-    // Simulate form submission
+    // Get form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value || 'Not provided';
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    
+    // Create email subject and body
+    const emailSubject = encodeURIComponent(`Lions Club Contact: ${subject}`);
+    const emailBody = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n` +
+        `Subject: ${subject}\n\n` +
+        `Message:\n${message}\n\n` +
+        `---\n` +
+        `Sent from Lions Club of Bangalore Sankalpa Website`
+    );
+    
+    // Create Gmail compose URL
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=bharathae59@gmail.com&su=${emailSubject}&body=${emailBody}`;
+    
+    // Show notification and redirect
+    showNotification('Redirecting to Gmail to send your message...', 'info');
+    
+    // Redirect to Gmail after a short delay
     setTimeout(() => {
-        // Show success message
-        showNotification('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
+        window.open(gmailUrl, '_blank');
         
         // Reset form
         contactForm.reset();
         
-        // Reset button with success animation
-        submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        submitButton.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+        // Reset button
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+        submitButton.style.background = '';
         
-        setTimeout(() => {
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-            submitButton.style.background = '';
-        }, 2000);
-    }, 2000);
+        // Show success message
+        showNotification('Gmail has been opened in a new tab. Please send the email to complete your contact request.', 'success');
+    }, 1500);
 }
 
 // Enhanced Notification System
@@ -890,13 +908,13 @@ function initializeCarousel() {
 }
 
 function moveCarousel(direction) {
-    currentSlide += direction;
+    currentSlide += direction * 2; // Move by 2 slides at once
     
-    // Wrap around
+    // Wrap around - ensure we land on valid slide indices
     if (currentSlide < 0) {
-        currentSlide = totalSlides - 1;
+        currentSlide = totalSlides - 2; // Go to second last slide to show last pair
     } else if (currentSlide >= totalSlides) {
-        currentSlide = 0;
+        currentSlide = 0; // Go to first slide
     }
     
     updateCarousel();
@@ -912,14 +930,14 @@ function updateCarousel() {
     const indicators = document.querySelectorAll('.indicator');
     
     if (track) {
-        const offset = -currentSlide * 100;
+        const offset = -currentSlide * 50; // Each slide is 50% width now
         track.style.transform = `translateX(${offset}%)`;
     }
     
-    // Update indicators
+    // Update indicators - show active for the first slide in the pair
     indicators.forEach((indicator, index) => {
         indicator.classList.remove('active');
-        if (index === currentSlide) {
+        if (index === currentSlide || index === currentSlide + 1) {
             indicator.classList.add('active');
         }
     });
@@ -1193,5 +1211,67 @@ dynamicStyles.textContent = `
 `;
 
 document.head.appendChild(dynamicStyles);
+
+// About Section Carousel Functions
+let aboutCurrentSlide = 0;
+let aboutTotalSlides = 22;
+
+function moveAboutCarousel(direction) {
+    const track = document.querySelector('.photo-carousel-section .carousel-track');
+    const indicators = document.querySelectorAll('.photo-carousel-section .indicator');
+    
+    if (!track) return;
+    
+    aboutCurrentSlide += direction;
+    
+    // Wrap around
+    if (aboutCurrentSlide < 0) {
+        aboutCurrentSlide = aboutTotalSlides - 1;
+    } else if (aboutCurrentSlide >= aboutTotalSlides) {
+        aboutCurrentSlide = 0;
+    }
+    
+    // Update carousel position
+    const offset = -aboutCurrentSlide * 100;
+    track.style.transform = `translateX(${offset}%)`;
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === aboutCurrentSlide);
+    });
+}
+
+function goToAboutSlide(slideIndex) {
+    aboutCurrentSlide = slideIndex;
+    moveAboutCarousel(0); // Update without changing slide
+}
+
+// Initialize about section carousel when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the about section and initialize carousel
+    const aboutCarousel = document.querySelector('.photo-carousel-section .carousel-track');
+    const slides = document.querySelectorAll('.photo-carousel-section .carousel-slide');
+    
+    console.log('Looking for about carousel...');
+    console.log('Found carousel track:', aboutCarousel);
+    console.log('Found slides:', slides.length);
+    
+    if (aboutCarousel && slides.length > 0) {
+        console.log('About section carousel initialized with', slides.length, 'slides');
+        
+        // Update total slides count
+        aboutTotalSlides = slides.length;
+        
+        // Initialize first slide
+        goToAboutSlide(0);
+        
+        // Auto-play for about carousel
+        setInterval(() => {
+            moveAboutCarousel(1);
+        }, 5000); // Change slide every 5 seconds
+    } else {
+        console.log('About carousel not found or no slides available');
+    }
+});
 
 console.log('Enhanced vibrant Lions Club application JavaScript loaded successfully');
