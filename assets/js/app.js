@@ -149,6 +149,14 @@ function initializeNavigation() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
+    
+    // Add touch support for mobile
+    hamburger.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
 
     // Navigation link clicks
     navLinks.forEach((link, index) => {

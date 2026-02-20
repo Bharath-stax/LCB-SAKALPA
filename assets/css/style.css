@@ -911,22 +911,22 @@ body {
   gap: 4px;
 }
 
-.hamburger span {
+.hamburger .bar {
   width: 25px;
   height: 3px;
   background: var(--clean-white);
   transition: all var(--duration-fast) var(--ease-standard);
 }
 
-.hamburger.active span:nth-child(1) {
+.hamburger.active .bar:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
 
-.hamburger.active span:nth-child(2) {
+.hamburger.active .bar:nth-child(2) {
   opacity: 0;
 }
 
-.hamburger.active span:nth-child(3) {
+.hamburger.active .bar:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
