@@ -3822,7 +3822,9 @@ main {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .carousel-slide img {
-    height: 300px;
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
   }
   
   /* Enhanced mobile navigation */
@@ -3850,6 +3852,16 @@ main {
   
   .hamburger {
     display: flex;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .hamburger.active {
+    background: var(--color-primary);
+  }
+  
+  .hamburger.active .bar {
+    background: white;
   }
   
   /* Improved mobile hero section */
