@@ -2621,9 +2621,8 @@ main {
 
 .full-width-carousel .carousel-item {
   flex: 0 0 auto;
-  width: 25vw;
-  height: 400px;
-  position: relative;
+  width: 100vw;
+  height: 300px;
   overflow: hidden;
 }
 
@@ -2636,6 +2635,10 @@ main {
 
 .full-width-carousel .carousel-item:hover img {
   transform: scale(1.05);
+}
+
+.full-width-carousel .carousel-track:hover {
+  animation-play-state: paused;
 }
 
 @keyframes fullWidthCarouselScroll {
