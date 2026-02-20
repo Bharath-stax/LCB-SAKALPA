@@ -129,6 +129,34 @@ function setupGlobalFunctions() {
     window.previousGalleryImage = previousGalleryImage;
     window.moveCarousel = moveCarousel;
     window.goToSlide = goToSlide;
+    
+    // Add test function for hamburger
+    window.testHamburger = function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            console.log('Hamburger toggled manually');
+            return true;
+        } else {
+            console.error('Hamburger or navMenu not found');
+            return false;
+        }
+    };
+    
+    // Add toggle function for inline onclick
+    window.toggleHamburger = function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            console.log('Hamburger toggled via inline onclick');
+        } else {
+            console.error('Hamburger or navMenu not found for inline toggle');
+        }
+    };
 }
 
 // Navigation Functions
@@ -138,12 +166,19 @@ function initializeNavigation() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    console.log('Navigation elements found:', {
+        hamburger: !!hamburger,
+        navMenu: !!navMenu,
+        navLinks: navLinks.length
+    });
+
     if (!hamburger || !navMenu) {
         return;
     }
 
     // Mobile hamburger menu
     hamburger.addEventListener('click', function(e) {
+        console.log('Hamburger clicked via event listener');
         e.preventDefault();
         e.stopPropagation();
         hamburger.classList.toggle('active');
@@ -152,6 +187,7 @@ function initializeNavigation() {
     
     // Add touch support for mobile
     hamburger.addEventListener('touchstart', function(e) {
+        console.log('Hamburger touched via event listener');
         e.preventDefault();
         e.stopPropagation();
         hamburger.classList.toggle('active');

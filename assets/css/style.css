@@ -905,10 +905,14 @@ body {
 }
 
 .hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    z-index: 1001;
+    background: var(--color-primary);
+    padding: 10px;
+    border-radius: 4px;
 }
 
 .hamburger .bar {
