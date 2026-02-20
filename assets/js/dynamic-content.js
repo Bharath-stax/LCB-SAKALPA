@@ -3,7 +3,6 @@ function generateCarouselHTML() {
     const carouselImages = window.IMAGE_CONFIG ? window.IMAGE_CONFIG.carousel : [];
     
     if (carouselImages.length === 0) {
-        console.warn('No carousel images found in IMAGE_CONFIG');
         return '';
     }
     
@@ -51,7 +50,6 @@ function generateGalleryHTML() {
     const galleryImages = window.IMAGE_CONFIG ? window.IMAGE_CONFIG.gallery : [];
     
     if (galleryImages.length === 0) {
-        console.warn('No gallery images found in IMAGE_CONFIG');
         return '';
     }
     

@@ -96,8 +96,6 @@ const serviceDetails = {
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM Content Loaded - Initializing vibrant Lions Club application...');
-    
     // Set up global functions first
     setupGlobalFunctions();
     
@@ -109,17 +107,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle initial hash or default to home
     const initialHash = window.location.hash.substring(1) || 'home';
-    console.log('Initial hash:', initialHash);
     showSection(initialHash);
     
     // Handle browser back/forward navigation
     window.addEventListener('hashchange', function() {
         const hash = window.location.hash.substring(1) || 'home';
-        console.log('Hash changed to:', hash);
         showSection(hash);
     });
-    
-    console.log('Application initialized successfully');
 });
 
 // Setup Global Functions
@@ -130,6 +124,7 @@ function setupGlobalFunctions() {
     window.closeServiceModal = closeServiceModal;
     window.openGalleryModal = openGalleryModal;
     window.closeGalleryModal = closeGalleryModal;
+    window.handleSubmit = handleSubmit;
     window.nextGalleryImage = nextGalleryImage;
     window.previousGalleryImage = previousGalleryImage;
     window.moveCarousel = moveCarousel;
@@ -138,14 +133,12 @@ function setupGlobalFunctions() {
 
 // Navigation Functions
 function initializeNavigation() {
-    console.log('Initializing navigation...');
     
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
     if (!hamburger || !navMenu) {
-        console.error('Navigation elements not found');
         return;
     }
 
@@ -153,7 +146,6 @@ function initializeNavigation() {
     hamburger.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Hamburger clicked');
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
@@ -164,10 +156,8 @@ function initializeNavigation() {
             e.preventDefault();
             e.stopPropagation();
             const href = this.getAttribute('href');
-            console.log('Nav link clicked:', href);
             if (href && href.startsWith('#')) {
                 const targetSection = href.substring(1);
-                console.log('Navigating to section:', targetSection);
                 
                 // Force section switch with debugging
                 showSection(targetSection);
@@ -188,7 +178,6 @@ function initializeNavigation() {
         navBrand.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Logo clicked');
             showSection('home');
         });
         navBrand.style.cursor = 'pointer';
@@ -201,7 +190,6 @@ function initializeNavigation() {
             e.preventDefault();
             const href = this.getAttribute('href');
             const targetSection = href.substring(1);
-            console.log('Footer link clicked:', targetSection);
             showSection(targetSection);
         });
     });
@@ -219,95 +207,61 @@ function initializeNavigation() {
 
 // Section Management
 function showSection(sectionId) {
-    console.log('=== SHOW SECTION CALLED ===');
-    console.log('Target section ID:', sectionId);
-    
-    if (!sectionId) {
-        console.error('No section ID provided');
-        return;
-    }
-    
-    // Get all sections
     const sections = document.querySelectorAll('.section, .hero-section');
-    console.log('Found sections:', sections.length);
-    sections.forEach((section, index) => {
-        console.log(`Section ${index}:`, section.id, section.className);
-    });
     
-    // Hide all sections
     sections.forEach(section => {
         section.classList.remove('active');
         section.classList.add('hidden');
-        // Clear any inline styles that might interfere
         section.style.display = '';
         section.style.opacity = '';
     });
-    console.log('All sections hidden');
-
-    // Show target section
+    
     const targetSection = document.getElementById(sectionId);
-    console.log('Target section element:', targetSection);
     
     if (targetSection) {
-        console.log('Target section found, showing it...');
         targetSection.classList.remove('hidden');
         targetSection.classList.add('active');
-        // Clear any inline styles and let CSS handle the display
         targetSection.style.display = '';
         targetSection.style.opacity = '';
         
-        console.log('Target section classes after update:', targetSection.className);
-        console.log('Target section computed style:', window.getComputedStyle(targetSection).display);
-        
-        // Add fade-in animation after a short delay
         setTimeout(() => {
             targetSection.classList.add('fade-in');
         }, 50);
         
-        // Update navigation
         updateActiveNavLink(sectionId);
         currentSection = sectionId;
         
-        // Scroll to top with smooth behavior
         window.scrollTo({ 
             top: 0, 
             behavior: 'smooth' 
         });
         
-        // Apply section-specific vibrant effects
         applyVibrantSectionEffects(sectionId);
-        
-        console.log('✅ Section shown successfully:', sectionId);
     } else {
-        console.error('❌ Section not found:', sectionId);
-        // Fallback to home if section doesn't exist
         const homeSection = document.getElementById('home');
         if (homeSection && sectionId !== 'home') {
-            console.log('Falling back to home section');
             showSection('home');
         }
     }
-    console.log('=== END SHOW SECTION ===');
 }
 
 function updateActiveNavLink(sectionId) {
     const navLinks = document.querySelectorAll('.nav-link');
+    
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
         if (href === '#' + sectionId) {
             link.classList.add('active');
-            console.log('Updated active nav link:', href);
         }
     });
 }
 
 // Vibrant Effects System
 function initializeVibrantEffects() {
-    console.log('Initializing vibrant effects...');
-    
     // Add enhanced hover effects to all cards
     const allCards = document.querySelectorAll('.service-card, .event-card, .involvement-card, .about-card, .stat-item, .gallery-item');
+    
     allCards.forEach(card => {
         // Store original styles
         const originalTransform = card.style.transform;
@@ -384,11 +338,9 @@ function applyVibrantSectionEffects(sectionId) {
 
 // Service Modal Functions
 function openServiceModal(serviceKey) {
-    console.log('Opening service modal for:', serviceKey);
     
     const service = serviceDetails[serviceKey];
     if (!service) {
-        console.error('Service not found:', serviceKey);
         return;
     }
 
@@ -396,7 +348,6 @@ function openServiceModal(serviceKey) {
     const modalContent = document.getElementById('modalContent');
     
     if (!serviceModal || !modalContent) {
-        console.error('Modal elements not found');
         return;
     }
     
@@ -430,11 +381,9 @@ function openServiceModal(serviceKey) {
     serviceModal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     
-    console.log('Service modal opened successfully');
 }
 
 function closeServiceModal() {
-    console.log('Closing service modal');
     const serviceModal = document.getElementById('serviceModal');
     if (serviceModal) {
         serviceModal.classList.add('hidden');
@@ -445,7 +394,6 @@ function closeServiceModal() {
 
 // Gallery Functions
 function openGalleryModal(index) {
-    console.log('Opening gallery modal for index:', index);
     currentGalleryIndex = index;
     updateGalleryModal();
     const galleryModal = document.getElementById('galleryModal');
@@ -457,7 +405,6 @@ function openGalleryModal(index) {
 }
 
 function closeGalleryModal() {
-    console.log('Closing gallery modal');
     const galleryModal = document.getElementById('galleryModal');
     if (galleryModal) {
         galleryModal.classList.add('hidden');
@@ -524,54 +471,68 @@ document.addEventListener('keydown', function(e) {
 
 // Contact Form Functions
 function initializeContactForm() {
-    console.log('Initializing contact form...');
+    // Try multiple times to find the form
+    const maxAttempts = 10;
+    let attempts = 0;
     
-    // Wait for DOM to be fully loaded
-    setTimeout(() => {
+    function tryInitialize() {
+        attempts++;
+        
         const contactForm = document.getElementById('contactForm');
         
-        if (!contactForm) {
-            console.log('Contact form not found, will retry later');
+        if (contactForm) {
+            // Remove any existing listeners to prevent duplicates
+            contactForm.removeEventListener('submit', handleSubmit);
+            
+            // Add fresh event listener
+            contactForm.addEventListener('submit', handleSubmit);
+            
+            // Set up real-time validation
+            const formInputs = contactForm.querySelectorAll('input, textarea, select');
+            
+            formInputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+                
+                input.addEventListener('input', function() {
+                    clearFieldError(this);
+                    // Add success state for valid fields
+                    if (this.value.trim() && validateField(this, true)) {
+                        this.style.borderColor = '#10B981';
+                        this.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
+                    }
+                });
+                
+                input.addEventListener('focus', function() {
+                    this.style.borderColor = '#3B82F6';
+                    this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                });
+            });
+            
             return;
         }
-
-        console.log('Contact form found, setting up event listeners');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log('Contact form submitted');
-            
-            if (validateContactForm()) {
-                submitContactForm();
-            }
-        });
-
-        // Real-time validation with vibrant feedback
-        const formInputs = contactForm.querySelectorAll('input, textarea, select');
-        console.log('Found form inputs:', formInputs.length);
         
-        formInputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-            
-            input.addEventListener('input', function() {
-                clearFieldError(this);
-                // Add success state for valid fields
-                if (this.value.trim() && validateField(this, true)) {
-                    this.style.borderColor = '#10B981';
-                    this.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
-                }
-            });
-            
-            input.addEventListener('focus', function() {
-                this.style.borderColor = '#3B82F6';
-                this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
-            });
-        });
-        
-        console.log('Contact form initialized successfully');
-    }, 500);
+        if (attempts < maxAttempts) {
+            setTimeout(tryInitialize, 100);
+        }
+    }
+    
+    // Start initialization
+    tryInitialize();
+}
+
+// Separate submit handler function
+function handleSubmit(e) {
+    e.preventDefault();
+    
+    const isValid = validateContactForm();
+    
+    if (isValid) {
+        submitContactForm();
+    } else {
+        showNotification('Please fill in all required fields correctly.', 'error');
+    }
 }
 
 function validateContactForm() {
@@ -683,7 +644,11 @@ function submitContactForm() {
     
     // Initialize EmailJS with your public key
     (function() {
-        emailjs.init("service_5pa8mqk");
+        try {
+            emailjs.init("5pa8mqk");
+        } catch (error) {
+            console.error('EmailJS initialization failed:', error);
+        }
     })();
     
     // Get form data
@@ -704,37 +669,75 @@ function submitContactForm() {
     };
     
     // Send email using EmailJS
-    emailjs.send('service_oy-qF3i6eKcq37UJD', 'template_default', templateParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            
-            // Show success message
-            showNotification('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Reset button with success animation
-            submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            submitButton.style.background = 'linear-gradient(135deg, #10B981, #059669)';
-            
-            setTimeout(() => {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                submitButton.style.background = '';
-            }, 2000);
-        })
-        .catch(function(error) {
-            console.log('FAILED...', error);
-            
-            // Show error message
-            showNotification('Sorry, there was an error sending your message. Please try again or contact us directly at bharathae59@gmail.com', 'error');
-            
-            // Reset button
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-            submitButton.style.background = '';
-        });
+    try {
+        emailjs.send('service_oy-qF3i6eKcq37UJD', 'template_default', templateParams)
+            .then(function(response) {
+                console.log('EmailJS SUCCESS:', response);
+                
+                // Show success message
+                showNotification('Thank you! Your message has been sent successfully. We will get back to you soon.', 'success');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button with success animation
+                submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                submitButton.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+                
+                setTimeout(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    submitButton.style.background = '';
+                }, 2000);
+            })
+            .catch(function(error) {
+                console.error('EmailJS FAILED:', error);
+                
+                // Fallback to Gmail redirect
+                
+                // Create email subject and body
+                const emailSubject = encodeURIComponent(`Lions Club Contact: ${subject}`);
+                const emailBody = encodeURIComponent(
+                    `Name: ${name}\n` +
+                    `Email: ${email}\n` +
+                    `Phone: ${phone}\n` +
+                    `Subject: ${subject}\n\n` +
+                    `Message:\n${message}\n\n` +
+                    `---\n` +
+                    `Sent from Lions Club of Bangalore Sankalpa Website`
+                );
+                
+                // Create Gmail compose URL
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=bharathae59@gmail.com&su=${emailSubject}&body=${emailBody}`;
+                
+                // Show notification and redirect
+                showNotification('Email service unavailable. Opening Gmail to send your message...', 'info');
+                
+                // Redirect to Gmail after a short delay
+                setTimeout(() => {
+                    window.open(gmailUrl, '_blank');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    submitButton.style.background = '';
+                    
+                    // Show success message
+                    showNotification('Gmail has been opened in a new tab. Please send the email to complete your contact request.', 'success');
+                }, 1500);
+            });
+    } catch (error) {
+        console.error('EmailJS send error:', error);
+        showNotification('Email service error. Please try again or contact us directly at bharathae59@gmail.com', 'error');
+        
+        // Reset button
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+        submitButton.style.background = '';
+    }
 }
 
 // Enhanced Notification System
@@ -903,7 +906,6 @@ let totalSlides = 6; // Will be updated based on actual carousel images
 let carouselInterval;
 
 function initializeCarousel() {
-    console.log('Initializing carousel...');
     
     // Update total slides based on configuration
     if (window.IMAGE_CONFIG && window.IMAGE_CONFIG.carousel) {
@@ -1266,12 +1268,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const aboutCarousel = document.querySelector('.photo-carousel-section .carousel-track');
     const slides = document.querySelectorAll('.photo-carousel-section .carousel-slide');
     
-    console.log('Looking for about carousel...');
-    console.log('Found carousel track:', aboutCarousel);
-    console.log('Found slides:', slides.length);
     
     if (aboutCarousel && slides.length > 0) {
-        console.log('About section carousel initialized with', slides.length, 'slides');
         
         // Update total slides count
         aboutTotalSlides = slides.length;
@@ -1284,8 +1282,5 @@ document.addEventListener('DOMContentLoaded', function() {
             moveAboutCarousel(1);
         }, 5000); // Change slide every 5 seconds
     } else {
-        console.log('About carousel not found or no slides available');
     }
 });
-
-console.log('Enhanced vibrant Lions Club application JavaScript loaded successfully');

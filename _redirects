@@ -1,4 +1,6 @@
 # Cloudflare Pages Redirects
 # Handle single-page application routing
+# Redirect old v2 subdirectory to root
+/v2/*  /$1   301
 
 /*    /index.html   200

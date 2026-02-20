@@ -2,13 +2,10 @@
 
 // Initialize Permanent Projects Section
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing permanent projects...');
     initializePermanentProjects();
 });
 
 function initializePermanentProjects() {
-    console.log('Permanent projects section loaded');
-    
     // Add hover effects to school cards
     const schoolCards = document.querySelectorAll('.school-card');
     schoolCards.forEach(card => {
@@ -32,8 +29,6 @@ function initializePermanentProjects() {
             }, 300);
         });
     });
-    
-    console.log('Permanent projects initialized successfully');
 }
 
 // Add pulse animation

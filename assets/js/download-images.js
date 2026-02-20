@@ -105,28 +105,20 @@ const imageUrls = {
 
 // Function to download images (for browser console use)
 function downloadImages() {
-    console.log('Starting image downloads...');
     
     // Download carousel images
     imageUrls.carousel.forEach((img, index) => {
-        console.log(`Downloading carousel image ${index + 1}: ${img.filename}`);
         // In a real implementation, you would use fetch() or a download library
-        console.log(`URL: ${img.url}`);
     });
     
     // Download gallery images  
     imageUrls.gallery.forEach((img, index) => {
-        console.log(`Downloading gallery image ${index + 1}: ${img.filename}`);
-        console.log(`URL: ${img.url}`);
     });
     
     // Download other images
     imageUrls.other.forEach((img, index) => {
-        console.log(`Downloading other image ${index + 1}: ${img.filename}`);
-        console.log(`URL: ${img.url}`);
     });
     
-    console.log('Image download information logged. Use a download tool or browser extension to download these URLs.');
 }
 
 // Export for use

@@ -667,7 +667,7 @@
                     <div class="contact-form card">
                         <div class="card__body">
                             <h3>Send us a Message</h3>
-                            <form id="contactForm">
+                            <form id="contactForm" method="POST" action="javascript:void(0)" onsubmit="return false;">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Full Name *</label>
                                     <input type="text" id="name" name="name" class="form-control" required>
@@ -694,8 +694,53 @@
                                     <label for="message" class="form-label">Message *</label>
                                     <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                                <button type="submit" class="btn btn--primary btn--full-width" onclick="handleFormSubmit(event)">Send Message</button>
                             </form>
+                            
+                            <script>
+                                function handleFormSubmit(event) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    
+                                    const form = document.getElementById('contactForm');
+                                    const name = document.getElementById('name').value;
+                                    const email = document.getElementById('email').value;
+                                    const phone = document.getElementById('phone').value || 'Not provided';
+                                    const subject = document.getElementById('subject').value;
+                                    const message = document.getElementById('message').value;
+                                    
+                                    // Simple validation
+                                    if (!name || !email || !subject || !message) {
+                                        alert('Please fill in all required fields.');
+                                        return false;
+                                    }
+                                    
+                                    // Create Gmail URL as fallback
+                                    const emailSubject = encodeURIComponent(`Lions Club Contact: ${subject}`);
+                                    const emailBody = encodeURIComponent(
+                                        `Name: ${name}\n` +
+                                        `Email: ${email}\n` +
+                                        `Phone: ${phone}\n` +
+                                        `Subject: ${subject}\n\n` +
+                                        `Message:\n${message}\n\n` +
+                                        `---\n` +
+                                        `Sent from Lions Club of Bangalore Sankalpa Website`
+                                    );
+                                    
+                                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=bharathae59@gmail.com&su=${emailSubject}&body=${emailBody}`;
+                                    
+                                    // Open Gmail
+                                    window.open(gmailUrl, '_blank');
+                                    
+                                    // Reset form
+                                    form.reset();
+                                    
+                                    // Show success message
+                                    alert('Gmail has been opened in a new tab. Please send the email to complete your contact request.');
+                                    
+                                    return false;
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>

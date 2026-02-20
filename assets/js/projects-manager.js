@@ -1,10 +1,7 @@
 // Show All Real Projects in 4-Column Grid
 function initializeProjects() {
-    console.log('Initializing all projects...');
-    
     const projectsGrid = document.getElementById('projectsGrid');
     if (!projectsGrid) {
-        console.log('Projects grid not found');
         return;
     }
     
@@ -20,7 +17,6 @@ function initializeProjects() {
     // Use real projects from database
     if (typeof window.PROJECTS_DATABASE !== 'undefined') {
         const allProjects = window.PROJECTS_DATABASE.projects;
-        console.log('Loading', allProjects.length, 'real projects');
         
         // Add all projects to grid
         allProjects.forEach((project, index) => {
@@ -28,13 +24,10 @@ function initializeProjects() {
             projectsGrid.appendChild(card);
             
             if (index < 10) {
-                console.log(`Card ${index + 1}: ${project.title}`);
+                // Only log first 10 cards
             }
         });
-        
-        console.log('Total cards added:', projectsGrid.children.length);
     } else {
-        console.log('Projects database not available, retrying...');
         setTimeout(initializeProjects, 500);
     }
 }
