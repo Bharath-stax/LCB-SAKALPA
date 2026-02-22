@@ -160,6 +160,19 @@ function setupGlobalFunctions() {
             console.error('Hamburger or navMenu not found for inline toggle');
         }
     };
+    
+    // Add close function for navigation
+    window.closeHamburger = function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            console.log('Hamburger closed via navigation');
+        } else {
+            console.error('Hamburger or navMenu not found for closing');
+        }
+    };
 }
 
 // Horizontal Gallery Functions
@@ -230,8 +243,7 @@ function initializeNavigation() {
             const targetId = this.getAttribute('href').substring(1);
             
             // Close mobile menu
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            closeHamburger();
             
             // Remove active class from all links
             navLinks.forEach(l => l.classList.remove('active'));
