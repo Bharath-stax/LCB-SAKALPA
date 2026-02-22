@@ -2292,7 +2292,7 @@ main {
 /* Permanent Projects Grid */
 .projects-grid-vertical {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-20);
   max-height: 60vh;
   overflow-y: scroll !important;
@@ -4015,6 +4015,11 @@ main {
     gap: var(--space-12);
   }
   
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  
   .gallery-item {
     border-radius: var(--radius-md);
     overflow: hidden;
@@ -4190,8 +4195,8 @@ main {
   }
   
   .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-20);
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
   }
   
   .gallery-grid {
