@@ -227,20 +227,32 @@ function initializeNavigation() {
     navLinks.forEach((link, index) => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                const targetSection = href.substring(1);
+            const targetId = this.getAttribute('href').substring(1);
+            
+            // Close mobile menu
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+            
+            // Show target section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                targetSection.classList.remove('hidden');
                 
-                // Force section switch with debugging
-                showSection(targetSection);
-                
-                // Update URL hash without scrolling
-                history.pushState(null, null, href);
-                
-                // Close mobile menu
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                // Smooth scroll to section
+                targetSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
