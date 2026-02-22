@@ -130,6 +130,9 @@ function setupGlobalFunctions() {
     window.moveCarousel = moveCarousel;
     window.goToSlide = goToSlide;
     
+    // Add gallery functions
+    window.moveGallery = moveGallery;
+    
     // Add test function for hamburger
     window.testHamburger = function() {
         const hamburger = document.querySelector('.hamburger');
@@ -157,6 +160,32 @@ function setupGlobalFunctions() {
             console.error('Hamburger or navMenu not found for inline toggle');
         }
     };
+}
+
+// Horizontal Gallery Functions
+let currentGalleryPosition = 0;
+
+function moveGallery(direction) {
+    const track = document.querySelector('.gallery-track');
+    if (!track) return;
+    
+    const items = document.querySelectorAll('.gallery-item');
+    
+    if (items.length === 0) return;
+    
+    const totalItems = items.length;
+    
+    currentGalleryPosition += direction;
+    
+    // Boundary checks - loop through images
+    if (currentGalleryPosition < 0) {
+        currentGalleryPosition = totalItems - 1;
+    } else if (currentGalleryPosition >= totalItems) {
+        currentGalleryPosition = 0;
+    }
+    
+    // Move to current image
+    track.style.transform = `translateX(-${currentGalleryPosition * 100}%)`;
 }
 
 // Navigation Functions
